@@ -1,0 +1,491 @@
+/* Iris Biotech — 21-Country Export Map Animation Styles (Clean Light & Dark Green Theme) */
+
+:root {
+  --color-dark-green: #1e3926;
+  --color-dark-green-hover: #142a1c;
+  --color-emerald: #10b981;
+  --color-emerald-light: #ecfdf5;
+  --color-white: #ffffff;
+  --color-card-bg: rgba(255, 255, 255, 0.96);
+  --color-border: #1e3926;
+  --color-border-light: rgba(30, 57, 38, 0.18);
+  --color-text-primary: #141715;
+  --color-text-muted: #58645c;
+  --font-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.export-journey-container {
+  position: relative;
+  width: 100%;
+  height: 760px;
+  min-height: 620px;
+  background: radial-gradient(circle at 50% 45%, #ffffff 0%, #f4f8f5 55%, #e8efe9 100%);
+  border-radius: 24px;
+  border: 2px solid var(--color-dark-green);
+  color: var(--color-text-primary);
+  font-family: var(--font-main);
+  overflow: hidden;
+  user-select: none;
+  box-shadow: 0 16px 40px rgba(30, 57, 38, 0.12);
+}
+
+.export-journey-canvas-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Subtle Vignette removed for clean daylight presentation */
+.export-journey-vignette {
+  display: none;
+}
+
+/* Top Header Bar */
+.export-journey-header {
+  position: absolute;
+  top: 20px;
+  left: 24px;
+  right: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+.export-journey-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.brand-title {
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--color-dark-green);
+  text-transform: uppercase;
+}
+
+.brand-subtitle {
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+
+/* Auto-Tour Floating Banner (Light White & Dark Green) */
+.tour-control-bar {
+  position: absolute;
+  top: 76px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffffff;
+  border: 2px solid var(--color-dark-green);
+  border-radius: 9999px;
+  padding: 8px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  z-index: 20;
+  box-shadow: 0 8px 24px rgba(30, 57, 38, 0.15);
+}
+
+.tour-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tour-pulse {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--color-emerald);
+  box-shadow: 0 0 10px var(--color-emerald);
+  animation: pulse 1.6s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.9); opacity: 0.8; }
+  50% { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.8; }
+}
+
+.tour-step-text {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: var(--color-dark-green);
+}
+
+.tour-btn {
+  background: var(--color-dark-green);
+  border: 1px solid var(--color-dark-green);
+  color: #ffffff;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.tour-btn:hover {
+  background: var(--color-dark-green-hover);
+  transform: translateY(-1px);
+}
+
+/* Active Destination Card (White & Dark Green) */
+.export-journey-origin-card {
+  position: absolute;
+  bottom: 28px;
+  left: 28px;
+  width: calc(100% - 56px);
+  max-width: 440px;
+  background: var(--color-card-bg);
+  backdrop-filter: blur(16px);
+  border: 2px solid var(--color-dark-green);
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: 0 16px 36px rgba(30, 57, 38, 0.16);
+  z-index: 15;
+  color: var(--color-text-primary);
+  pointer-events: auto;
+}
+
+.origin-badge {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.origin-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 9px;
+  border-radius: 9999px;
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-dark-green);
+}
+
+.origin-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--color-dark-green);
+  letter-spacing: -0.01em;
+  margin: 0;
+  line-height: 1.15;
+}
+
+.origin-subtitle {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+/* Route Specs Grid */
+.origin-specs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-border-light);
+}
+
+.spec-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+}
+
+.spec-value {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--color-dark-green);
+  margin-top: 2px;
+}
+
+/* Cultivars list */
+.cultivar-tag {
+  display: inline-block;
+  padding: 2px 8px;
+  background: #f4f6f4;
+  border: 1px solid rgba(30, 57, 38, 0.18);
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--color-dark-green);
+}
+
+/* Progress bar inside card */
+.tour-progress-track {
+  width: 100%;
+  height: 5px;
+  background: #e5eae6;
+  border-radius: 9999px;
+  overflow: hidden;
+  margin-top: 12px;
+}
+
+.tour-progress-bar {
+  height: 100%;
+  background: var(--color-dark-green);
+  border-radius: 9999px;
+  transition: width 0.4s ease;
+}
+
+/* Loading Overlay */
+.export-journey-loading {
+  position: absolute;
+  inset: 0;
+  background: #faf8f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  z-index: 100;
+  color: var(--color-dark-green);
+}
+
+.loading-brand {
+  font-size: 22px;
+  letter-spacing: 0.2em;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.loading-text {
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+}
+
+.loading-bar-wrap {
+  width: 180px;
+  height: 3px;
+  background: rgba(30, 57, 38, 0.15);
+  border-radius: 9999px;
+  overflow: hidden;
+  position: relative;
+}
+
+.loading-bar-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 40%;
+  background: var(--color-dark-green);
+  border-radius: 9999px;
+  animation: loadingSlide 1.4s infinite ease-in-out;
+}
+
+@keyframes loadingSlide {
+  0% { left: -40%; width: 30%; }
+  50% { width: 60%; }
+  100% { left: 100%; width: 20%; }
+}
+
+/* Bottom Attribution Footer */
+.export-journey-attribution {
+  position: absolute;
+  bottom: 12px;
+  right: 20px;
+  font-size: 10px;
+  color: var(--color-text-muted);
+  z-index: 10;
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Tablet & Mobile responsiveness */
+@media (max-width: 768px) {
+  .export-journey-container {
+    height: 640px;
+    min-height: 560px;
+    border-radius: 18px;
+  }
+
+  .export-journey-header {
+    top: 12px;
+    left: 12px;
+    right: 12px;
+  }
+
+  .brand-title {
+    font-size: 14px;
+    letter-spacing: 0.1em;
+  }
+
+  .brand-subtitle {
+    font-size: 10px;
+  }
+
+  .tour-control-bar {
+    top: 56px;
+    left: 12px;
+    right: 12px;
+    width: calc(100% - 24px);
+    transform: none;
+    padding: 6px 12px;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .tour-step-text {
+    font-size: 11px;
+  }
+
+  .tour-btn {
+    padding: 4px 10px;
+    font-size: 9.5px;
+  }
+
+  .export-journey-origin-card {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    width: calc(100% - 24px);
+    max-width: none;
+    padding: 14px 16px;
+    border-radius: 16px;
+  }
+
+  .origin-title {
+    font-size: 20px;
+  }
+
+  .origin-subtitle {
+    font-size: 11px;
+  }
+
+  .origin-specs {
+    gap: 8px;
+    margin-top: 10px;
+    padding-top: 10px;
+  }
+
+  .spec-label {
+    font-size: 9px;
+  }
+
+  .spec-value {
+    font-size: 12px;
+  }
+
+  .export-journey-attribution {
+    display: none;
+  }
+}
+
+/* Small Smartphone Viewports (iPhone SE, Galaxy S, iPhone 12/13/14/15/16 Pro, Pixel) */
+@media (max-width: 480px) {
+  .export-journey-container {
+    height: 580px;
+    min-height: 520px;
+    border-radius: 16px;
+  }
+
+  .export-journey-header {
+    top: 10px;
+    left: 10px;
+    right: 10px;
+  }
+
+  .brand-title {
+    font-size: 13px;
+  }
+
+  .brand-subtitle {
+    font-size: 9.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .tour-control-bar {
+    top: 50px;
+    left: 10px;
+    right: 10px;
+    width: calc(100% - 20px);
+    padding: 5px 8px;
+    border-width: 1.5px;
+    gap: 6px;
+  }
+
+  .tour-step-text {
+    font-size: 10.5px;
+    font-weight: 700;
+  }
+
+  .tour-btn {
+    padding: 3.5px 7px;
+    font-size: 8.5px;
+    gap: 3px;
+  }
+
+  .export-journey-origin-card {
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    width: calc(100% - 20px);
+    padding: 12px 14px;
+    border-radius: 14px;
+    border-width: 1.5px;
+  }
+
+  .origin-badge-pill {
+    padding: 2px 7px;
+    font-size: 9px;
+  }
+
+  .origin-title {
+    font-size: 18px;
+  }
+
+  .origin-subtitle {
+    font-size: 10.5px;
+  }
+
+  .origin-specs {
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-top: 8px;
+    padding-top: 8px;
+  }
+
+  .spec-label {
+    font-size: 8.5px;
+  }
+
+  .spec-value {
+    font-size: 11.5px;
+  }
+
+  .cultivar-tag {
+    font-size: 9px;
+    padding: 1.5px 6px;
+  }
+}

@@ -1,0 +1,4 @@
+/sylva    /landing/    301!
+/sylva/   /landing/    301!
+/sylva/*  /landing/    301!
+/*        /index.html  200
